@@ -1,24 +1,3 @@
-/* ============================================================
-   PORTFOLIO — SHARED SCRIPT
-   ============================================================ */
-
-/* ---------- Theme toggle ---------- */
-(function initTheme(){
-  const root = document.documentElement;
-  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-  root.setAttribute('data-theme', prefersLight ? 'light' : 'dark');
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('themeToggle');
-    if(!btn) return;
-    btn.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme');
-      root.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-    });
-  });
-})();
-
-/* ---------- Mobile nav ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
@@ -36,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ---------- WhatsApp float tooltip ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   const wa = document.getElementById('waFloat');
   const tip = document.getElementById('waTooltip');
@@ -52,14 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
   wa.addEventListener('mouseleave', () => tip.classList.remove('show'));
 });
 
-/* ---------- Terminal typing effect (home hero) ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   const el = document.getElementById('terminalOutput');
   if(!el) return;
 
   const lines = [
     { type:'cmd', text:'whoami' },
-    { type:'out', text:'>> Senior Software Engineer · 8+ yrs building scalable products' },
+    { type:'out', text:'>> Senior Full-Stack Engineer · 8+ yrs building scalable products' },
     { type:'cmd', text:'cat core_stack.json' },
     { type:'out', text:'>> { "backend": "Node · Go · Python", "frontend": "React · TypeScript" }' },
     { type:'cmd', text:'status --current' },
@@ -98,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(typeNext, 500);
 });
 
-/* ---------- Project filters (projects.html) ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('[data-category]');
@@ -116,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* ---------- Skill bars animate on view ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   const bars = document.querySelectorAll('.bar-fill');
   if(!bars.length) return;
@@ -132,7 +107,18 @@ document.addEventListener('DOMContentLoaded', () => {
   bars.forEach(b => { b.style.width = '0%'; io.observe(b); });
 });
 
-/* ---------- Contact form (submits via FormSubmit — replace with your email) ---------- */
+const EMAIL_ENDPOINT = '/api/send-email';
+
+async function submitFormToEmailApi(form){
+  const data = Object.fromEntries(new FormData(form).entries());
+  const res = await fetch(EMAIL_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ formName: form.dataset.formName || form.id, fields: data })
+  });
+  if(!res.ok) throw new Error('bad response');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contactForm');
   const status = document.getElementById('contactStatus');
@@ -158,18 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.disabled = true;
 
     try{
-      const res = await fetch(form.action, {
-        method:'POST',
-        headers:{ 'Accept':'application/json' },
-        body:new FormData(form)
-      });
-      if(res.ok){
-        status.textContent = 'Message sent — thank you! I\'ll reply within 1–2 business days.';
-        status.className = 'form-status show ok';
-        form.reset();
-      } else {
-        throw new Error('bad response');
-      }
+      await submitFormToEmailApi(form);
+      status.textContent = 'Message sent — thank you! I\'ll reply within 1–2 business days.';
+      status.className = 'form-status show ok';
+      form.reset();
     } catch(err){
       status.textContent = 'Could not send right now — please email me directly, or try again shortly.';
       status.className = 'form-status show err';
@@ -180,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* ---------- Newsletter form ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('newsletterForm');
   const status = document.getElementById('newsletterStatus');
@@ -203,18 +180,10 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.disabled = true;
 
     try{
-      const res = await fetch(form.action, {
-        method:'POST',
-        headers:{ 'Accept':'application/json' },
-        body:new FormData(form)
-      });
-      if(res.ok){
-        status.textContent = 'Subscribed! Watch your inbox for updates.';
-        status.className = 'form-status show ok';
-        form.reset();
-      } else {
-        throw new Error('bad response');
-      }
+      await submitFormToEmailApi(form);
+      status.textContent = 'Subscribed! Watch your inbox for updates.';
+      status.className = 'form-status show ok';
+      form.reset();
     } catch(err){
       status.textContent = 'Could not subscribe right now — please try again shortly.';
       status.className = 'form-status show err';
@@ -225,7 +194,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* ---------- Reveal-on-scroll for cards/sections ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('quoteForm');
+  const status = document.getElementById('quoteStatus');
+  if(!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+
+    const name = form.querySelector('#quoteName').value.trim();
+    const email = form.querySelector('#quoteEmail').value.trim();
+    const scope = form.querySelector('#quoteScope').value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!name || !emailPattern.test(email) || !scope){
+      status.textContent = 'Please fill in your name, a valid email, and project scope.';
+      status.className = 'form-status show err';
+      return;
+    }
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try{
+      await submitFormToEmailApi(form);
+      status.textContent = 'Quote request received — I\'ll follow up with pricing within 1–2 business days.';
+      status.className = 'form-status show ok';
+      form.reset();
+    } catch(err){
+      status.textContent = 'Could not send right now — please email me directly, or try again shortly.';
+      status.className = 'form-status show err';
+    } finally {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
+  });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const targets = document.querySelectorAll('.card, .proj-card, .stack-card, .quote-card');
   if(!targets.length || !('IntersectionObserver' in window)) return;
