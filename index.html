@@ -66,18 +66,7 @@
     <article class="glass card proj-card">
       <div class="proj-thumb">
         <span class="proj-tag mono">Fintech</span>
-        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C9A227"/><stop offset="100%" stop-color="#1F9D63"/></linearGradient></defs>
-          <rect width="300" height="190" fill="url(#g1)" opacity="0.9"/>
-          <g fill="#fff" opacity="0.9" font-family="JetBrains Mono, monospace" font-size="13">
-            <text x="24" y="40">&#123;</text>
-            <text x="40" y="64">"ledger":</text>
-            <text x="40" y="86">"balanced"</text>
-            <text x="24" y="108">&#125;</text>
-          </g>
-          <circle cx="245" cy="55" r="34" fill="#fff" opacity="0.14"/>
-          <circle cx="270" cy="140" r="52" fill="#fff" opacity="0.1"/>
-        </svg>
+        <img src="images/projects/ledgerly.jpg" alt="Ledgerly — Payments Dashboard preview" loading="lazy">
       </div>
       <div class="proj-body">
         <h3>Ledgerly — Payments Dashboard</h3>
@@ -96,16 +85,7 @@
     <article class="glass card proj-card">
       <div class="proj-thumb">
         <span class="proj-tag mono">Dev Tools</span>
-        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1F9D63"/><stop offset="100%" stop-color="#8A6B14"/></linearGradient></defs>
-          <rect width="300" height="190" fill="url(#g2)" opacity="0.9"/>
-          <g stroke="#fff" stroke-width="2" opacity="0.85" fill="none">
-            <path d="M100 60 L70 95 L100 130"/>
-            <path d="M200 60 L230 95 L200 130"/>
-            <path d="M155 50 L145 140"/>
-          </g>
-          <circle cx="60" cy="150" r="40" fill="#fff" opacity="0.12"/>
-        </svg>
+        <img src="images/projects/pipecraft.jpg" alt="Pipecraft — CI/CD Orchestrator preview" loading="lazy">
       </div>
       <div class="proj-body">
         <h3>Pipecraft — CI/CD Orchestrator</h3>
@@ -124,16 +104,7 @@
     <article class="glass card proj-card">
       <div class="proj-thumb">
         <span class="proj-tag mono">SaaS</span>
-        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#E4C558"/><stop offset="100%" stop-color="#2FBE7C"/></linearGradient></defs>
-          <rect width="300" height="190" fill="url(#g3)" opacity="0.9"/>
-          <g fill="#fff" opacity="0.85">
-            <rect x="40" y="110" width="26" height="50" rx="4"/>
-            <rect x="80" y="80" width="26" height="80" rx="4"/>
-            <rect x="120" y="55" width="26" height="105" rx="4"/>
-            <rect x="160" y="95" width="26" height="65" rx="4"/>
-          </g>
-        </svg>
+        <img src="images/projects/northlane.jpg" alt="Northlane — Analytics Suite preview" loading="lazy">
       </div>
       <div class="proj-body">
         <h3>Northlane — Analytics Suite</h3>
@@ -154,6 +125,8 @@
     <a href="projects.html" class="btn btn-ghost">See full portfolio</a>
   </div>
 </section>
+
+
 
 <section class="section section-b wrap" id="stacks">
   <div class="section-head">
@@ -202,6 +175,51 @@
   </div>
 </section>
 
+
+
+<section class="section section-a wrap" id="insights">
+  <div class="section-head">
+    <div class="eyebrow">writing</div>
+    <h2>Recent notes on engineering</h2>
+    <p>Short write-ups on backend architecture, dev tooling, and the tradeoffs behind shipping full-stack products.</p>
+  </div>
+  <div class="grid grid-3">
+    <article class="glass card article-card">
+      <div class="article-thumb">
+        <img src="images/articles/idempotent-payment-apis.jpg" alt="Designing idempotent payment APIs" loading="lazy">
+      </div>
+      <div class="article-body">
+        <span class="article-meta">ARCHITECTURE · 6 MIN READ</span>
+        <h3>Designing idempotent payment APIs</h3>
+        <p>How I structure retry-safe write paths for financial systems so double-clicks never mean double-charges.</p>
+        <a href="#">Read the write-up →</a>
+      </div>
+    </article>
+    <article class="glass card article-card">
+      <div class="article-thumb">
+        <img src="images/articles/cicd-orchestrator.jpg" alt="Why we built our own CI/CD orchestrator" loading="lazy">
+      </div>
+      <div class="article-body">
+        <span class="article-meta">DEV TOOLING · 5 MIN READ</span>
+        <h3>Why we built our own CI/CD orchestrator</h3>
+        <p>Lessons from replacing a brittle Jenkins setup with a self-hosted, DAG-based pipeline builder.</p>
+        <a href="#">Read the write-up →</a>
+      </div>
+    </article>
+    <article class="glass card article-card">
+      <div class="article-thumb">
+        <img src="images/articles/multi-tenant-data-models.jpg" alt="A pragmatic guide to multi-tenant data models" loading="lazy">
+      </div>
+      <div class="article-body">
+        <span class="article-meta">FULL-STACK · 7 MIN READ</span>
+        <h3>A pragmatic guide to multi-tenant data models</h3>
+        <p>Row-level security, tenant isolation, and the schema decisions that keep analytics dashboards fast at scale.</p>
+        <a href="#">Read the write-up →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
 <section class="section section-c wrap" id="testimonials">
   <div class="section-head">
     <div class="eyebrow">client reviews</div>
@@ -245,48 +263,6 @@
   </div>
 </section>
 
-<section class="section section-a wrap" id="insights">
-  <div class="section-head">
-    <div class="eyebrow">writing</div>
-    <h2>Recent notes on engineering</h2>
-    <p>Short write-ups on backend architecture, dev tooling, and the tradeoffs behind shipping full-stack products.</p>
-  </div>
-  <div class="grid grid-3">
-    <article class="glass card article-card">
-      <div class="article-thumb">
-        <svg viewBox="0 0 300 150"><rect width="300" height="150" fill="#14110a"/><g stroke="#C9A227" stroke-width="2" fill="none" opacity="0.8"><path d="M40 100 L100 60 L160 90 L220 40 L260 70"/></g></svg>
-      </div>
-      <div class="article-body">
-        <span class="article-meta">ARCHITECTURE · 6 MIN READ</span>
-        <h3>Designing idempotent payment APIs</h3>
-        <p>How I structure retry-safe write paths for financial systems so double-clicks never mean double-charges.</p>
-        <a href="#">Read the write-up →</a>
-      </div>
-    </article>
-    <article class="glass card article-card">
-      <div class="article-thumb">
-        <svg viewBox="0 0 300 150"><rect width="300" height="150" fill="#0e1712"/><g stroke="#1F9D63" stroke-width="2" fill="none" opacity="0.8"><rect x="50" y="40" width="60" height="60" rx="8"/><rect x="130" y="55" width="60" height="45" rx="8"/><rect x="210" y="35" width="40" height="65" rx="8"/></g></svg>
-      </div>
-      <div class="article-body">
-        <span class="article-meta">DEV TOOLING · 5 MIN READ</span>
-        <h3>Why we built our own CI/CD orchestrator</h3>
-        <p>Lessons from replacing a brittle Jenkins setup with a self-hosted, DAG-based pipeline builder.</p>
-        <a href="#">Read the write-up →</a>
-      </div>
-    </article>
-    <article class="glass card article-card">
-      <div class="article-thumb">
-        <svg viewBox="0 0 300 150"><rect width="300" height="150" fill="#0c0d0b"/><g stroke="#E4C558" stroke-width="2" fill="none" opacity="0.8"><path d="M40 110h220"/><path d="M60 110V70M110 110V50M160 110V85M210 110V60M260 110V40"/></g></svg>
-      </div>
-      <div class="article-body">
-        <span class="article-meta">FULL-STACK · 7 MIN READ</span>
-        <h3>A pragmatic guide to multi-tenant data models</h3>
-        <p>Row-level security, tenant isolation, and the schema decisions that keep analytics dashboards fast at scale.</p>
-        <a href="#">Read the write-up →</a>
-      </div>
-    </article>
-  </div>
-</section>
 
 <footer>
   <div class="wrap footer-inner">

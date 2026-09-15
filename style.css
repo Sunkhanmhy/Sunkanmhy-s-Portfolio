@@ -316,7 +316,7 @@ button{ font-family:inherit; cursor:pointer; }
   display:flex; align-items:center; justify-content:center;
   overflow:hidden;
 }
-.proj-thumb svg{ width:100%; height:100%; }
+.proj-thumb svg, .proj-thumb img{ width:100%; height:100%; object-fit:cover; }
 .proj-tag{
   position:absolute; top:14px; left:14px;
   font-family:'JetBrains Mono',monospace;
@@ -419,8 +419,8 @@ button{ font-family:inherit; cursor:pointer; }
 .stars svg.dim{ fill:var(--glass-border); }
 
 .article-card{ padding:0; overflow:hidden; display:flex; flex-direction:column; }
-.article-thumb{ height:150px; background:var(--card-img-bg); border-bottom:1px solid var(--card-border); display:flex; align-items:center; justify-content:center; }
-.article-thumb svg{ width:100%; height:100%; }
+.article-thumb{ height:150px; background:var(--card-img-bg); border-bottom:1px solid var(--card-border); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.article-thumb svg, .article-thumb img{ width:100%; height:100%; object-fit:cover; }
 .article-body{ padding:22px 24px 26px; flex:1; display:flex; flex-direction:column; }
 .article-meta{ font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--text-3); margin-bottom:10px; }
 .article-body h3{ font-size:17px; margin-bottom:8px; }
