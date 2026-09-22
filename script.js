@@ -35,12 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if(!el) return;
 
   const lines = [
-    { type:'cmd', text:'whoami' },
-    { type:'out', text:'>> Senior Full-Stack Engineer · 8+ yrs building scalable products' },
-    { type:'cmd', text:'cat core_stack.json' },
-    { type:'out', text:'>> { "backend": "Node · Go · Python", "frontend": "React · TypeScript" }' },
-    { type:'cmd', text:'status --current' },
+    { type:'cmd', text:'About-me' },
+    { type:'out', text:'>> Full-Stack Engineer · 3+ yrs building scalable products' },
+
+    { type:'cmd', text:'cat dev-stack.json' },
+    { type:'out', text:'>> { "backend": "Node · Go · Python", "frontend": "React · TypeScript", "Environment": "AWS · Google CLoud · Railway · Plesk · cPanel" }' },
+    
+    { type:'cmd', text:'Opening-status -- active' },
     { type:'out', text:'>> Available for select freelance & full-time roles' },
+
+    { type:'cmd', text:'Application-type' },
+    { type:'out', text:'>> Full-time, Contract, Freelance, Testing & QA' },
+
+    { type:'cmd', text:'Project-roles' },
+    { type:'out', text:'>> Frontend Development, Backend Development, Testing & QA, Native Mobile App, Native Desktop App, Cloud-Based Solutions' },
   ];
 
   let lineIndex = 0, charIndex = 0;
