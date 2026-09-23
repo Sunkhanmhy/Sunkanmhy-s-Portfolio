@@ -317,6 +317,12 @@ button{ font-family:inherit; cursor:pointer; }
   overflow:hidden;
 }
 .proj-thumb svg, .proj-thumb img{ width:100%; height:100%; object-fit:cover; }
+.thumb-slider{ position:relative; width:100%; height:100%; overflow:hidden; }
+.thumb-track{ display:flex; width:100%; height:100%; transition:transform .6s ease; }
+.thumb-track img{ flex:0 0 100%; }
+.thumb-dots{ position:absolute; z-index:2; bottom:10px; left:0; right:0; display:flex; justify-content:center; gap:6px; }
+.thumb-dot{ width:7px; height:7px; padding:0; border-radius:50%; border:none; background:rgba(255,255,255,0.45); cursor:pointer; transition:background .2s ease, transform .2s ease; }
+.thumb-dot.active{ background:#fff; transform:scale(1.3); }
 .proj-tag{
   position:absolute; top:14px; left:14px;
   font-family:'JetBrains Mono',monospace;
@@ -410,7 +416,9 @@ button{ font-family:inherit; cursor:pointer; }
   background:linear-gradient(135deg, var(--gold), var(--green));
   display:flex; align-items:center; justify-content:center;
   font-family:'Space Grotesk',sans-serif; font-weight:700; color:#0A0C0A; font-size:15px;
+  overflow:hidden;
 }
+.avatar-ring img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
 .quote-person b{ display:block; font-size:14px; }
 .quote-person span{ font-size:12px; color:var(--text-3); }
 

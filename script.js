@@ -84,6 +84,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.thumb-slider').forEach(slider => {
+    const track = slider.querySelector('.thumb-track');
+    const dots = slider.querySelectorAll('.thumb-dot');
+    if(!track || !dots.length) return;
+
+    let index = 0;
+    const goTo = (i) => {
+      index = (i + dots.length) % dots.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    };
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    let timer = setInterval(() => goTo(index + 1), 4000);
+    slider.addEventListener('mouseenter', () => clearInterval(timer));
+    slider.addEventListener('mouseleave', () => { timer = setInterval(() => goTo(index + 1), 4000); });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('[data-category]');
   if(!filterBtns.length) return;
