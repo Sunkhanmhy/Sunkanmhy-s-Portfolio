@@ -5,6 +5,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "build": "echo \"No build step required for static site\""
   }
 }
