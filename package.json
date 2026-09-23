@@ -2,8 +2,22 @@
   "name": "sunkanmhys-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Static portfolio site with a Vercel serverless function for form email delivery via Resend.",
+  "description": "Static portfolio site with a Railway serverless function for form email delivery via Resend.",
   "engines": {
     "node": ">=18"
+  }
+}
+
+
+{
+  "scripts": {
+    "start": "node script.js"
+  }
+}
+
+
+{
+  "scripts": {
+    "start": "node send-email.js"
   }
 }
