@@ -21,7 +21,7 @@
   --text-2:#B9BDB2;
   --text-3:#818779;
   --nav-bg: rgba(14,16,13,1);
-  --app-margin: 12px;
+  --app-margin: 20px;
   --card-img-bg: rgba(255,255,255,0.04);
   --input-bg: rgba(255,255,255,0.05);
   --input-border: rgba(255,255,255,0.16);
@@ -32,7 +32,7 @@
 }
 
 *{box-sizing:border-box; margin:0; padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth; background:var(--bg);}
 body{
   font-family:'Inter', sans-serif;
   background:var(--bg);
@@ -548,7 +548,7 @@ footer{ padding:56px 0 40px; margin-top:40px; background:var(--footer-bg); borde
 }
 @media (max-width: 760px){
   body{ padding:var(--app-margin); }
-  .navbar{ top:var(--app-margin); }
+  .navbar{ top:var(--app-margin); background:var(--bg); }
   .section-a, .section-b, .section-c{ box-shadow:none; clip-path:none; }
   .nav-links{
     position:fixed; top:88px; left:20px; right:20px;
