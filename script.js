@@ -31,6 +31,43 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.getElementById('installBanner');
+  const installBtn = document.getElementById('installAppBtn');
+  const dismissBtn = document.getElementById('installDismiss');
+  if(!banner || !installBtn || !dismissBtn) return;
+
+  const DISMISS_KEY = 'sunkanmhy-install-dismissed';
+  let deferredPrompt = null;
+
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if(isStandalone || localStorage.getItem(DISMISS_KEY) === '1') return;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    banner.classList.add('show');
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    banner.classList.remove('show');
+  });
+
+  dismissBtn.addEventListener('click', () => {
+    banner.classList.remove('show');
+    localStorage.setItem(DISMISS_KEY, '1');
+  });
+
+  window.addEventListener('appinstalled', () => {
+    banner.classList.remove('show');
+    localStorage.setItem(DISMISS_KEY, '1');
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
   const el = document.getElementById('terminalOutput');
   if(!el) return;
 
