@@ -115,6 +115,7 @@ button{ font-family:inherit; cursor:pointer; }
   top:0;
   z-index:100;
   padding:18px 0;
+  background:var(--bg);
 }
 .nav-inner{
   max-width:1180px;
