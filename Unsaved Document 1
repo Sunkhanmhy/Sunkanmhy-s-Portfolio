@@ -1,3 +1,0 @@
-Look at this appand understand everything that it does. Then look at the entire setup for auth, database, schema, bsuiness login, APIs, edge functions and every other thing to ensure that they are on database. I want to transition over to using plain postgress with JWt auth and both the database and the app will be hosted on railway. We might need to modify and build an express, fast, secured, lightweight backend for the AI edge function that is in the supabase folder. Look online for the latest and most secured details on setting up an app on railway in this manner. 
-
-I will provide all the Railway URLs needed for the builup.
