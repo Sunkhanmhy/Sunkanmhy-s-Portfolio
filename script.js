@@ -68,24 +68,45 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const splash = document.getElementById('pwaSplash');
-  if(!splash) return;
-
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-  if(!isStandalone){ splash.remove(); return; }
+  if(!isStandalone) return;
 
-  splash.classList.add('show');
-  const start = Date.now();
-  const MIN_DISPLAY = 900;
-  const dismiss = () => {
-    const wait = Math.max(MIN_DISPLAY - (Date.now() - start), 0);
-    setTimeout(() => {
-      splash.classList.add('hide');
-      setTimeout(() => splash.remove(), 400);
-    }, wait);
+  let loader = document.getElementById('pwaAppLoader');
+  if(!loader){
+    loader = document.createElement('div');
+    loader.id = 'pwaAppLoader';
+    loader.className = 'pwa-splash';
+    loader.innerHTML = '<div class="splash-ring"><img src="images/Sunkanmhy-removebg-preview.png" alt="Sunkanmhy" class="splash-avatar"></div>';
+    document.body.appendChild(loader);
+  }
+
+  const showLoader = () => {
+    loader.classList.remove('hide');
+    loader.classList.add('show');
   };
-  if(document.readyState === 'complete') dismiss();
-  else window.addEventListener('load', dismiss);
+
+  const hideLoader = () => {
+    loader.classList.add('hide');
+    setTimeout(() => loader.classList.remove('show'), 350);
+  };
+
+  showLoader();
+  setTimeout(hideLoader, 700);
+
+  document.addEventListener('visibilitychange', () => {
+    if(document.visibilityState === 'visible') {
+      showLoader();
+      setTimeout(hideLoader, 500);
+    }
+  });
+
+  window.addEventListener('pageshow', () => {
+    const navType = performance.getEntriesByType('navigation')[0]?.type;
+    if(navType === 'reload' || navType === 'back_forward') {
+      showLoader();
+      setTimeout(hideLoader, 500);
+    }
+  });
 });
 
 document.addEventListener('DOMContentLoaded', () => {
