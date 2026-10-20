@@ -75,7 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if(!loader){
     loader = document.createElement('div');
     loader.id = 'pwaAppLoader';
-    loader.className = 'pwa-splash';
+    loader.className = 'app-loader';
+    loader.setAttribute('aria-live', 'polite');
+    loader.setAttribute('aria-label', 'Loading app');
     loader.innerHTML = '<div class="splash-ring"><img src="images/Sunkanmhy-removebg-preview.png" alt="Sunkanmhy" class="splash-avatar"></div>';
     document.body.appendChild(loader);
   }

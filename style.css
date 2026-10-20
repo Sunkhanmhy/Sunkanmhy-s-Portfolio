@@ -570,19 +570,26 @@ footer{ padding:56px 0 40px; margin-top:40px; background:var(--footer-bg); borde
 }
 .install-dismiss:hover{ color:var(--text-1); border-color:var(--gold); }
 
-.pwa-splash{
-  position:fixed; inset:0; z-index:9999;
+.app-loader{
+  position:fixed;
+  right:22px;
+  bottom:90px;
+  z-index:9998;
   display:none;
-  align-items:center; justify-content:center;
-  background:rgba(10,12,10,0.88);
-  backdrop-filter:blur(6px);
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+  border-radius:18px;
+  background:rgba(10,12,10,0.56);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
   transition:opacity .35s ease;
 }
-.pwa-splash.show{ display:flex; }
-.pwa-splash.hide{ opacity:0; pointer-events:none; }
+.app-loader.show{ display:flex; }
+.app-loader.hide{ opacity:0; pointer-events:none; }
 .splash-ring{
   position:relative;
-  width:90px; height:90px;
+  width:62px; height:62px;
   border-radius:50%;
   display:flex; align-items:center; justify-content:center;
   background:rgba(255,255,255,0.04);
@@ -623,7 +630,11 @@ footer{ padding:56px 0 40px; margin-top:40px; background:var(--footer-bg); borde
 @media (max-width: 760px){
   body{ padding:0 var(--app-margin) var(--app-margin); }
   .navbar{ top:0; background:var(--bg); }
-  .section-a, .section-b, .section-c{ box-shadow:none; clip-path:none; }
+  .section-a, .section-b, .section-c{
+    background:var(--bg);
+    box-shadow:none;
+    clip-path:none;
+  }
   .nav-links{
     position:fixed; top:88px; left:20px; right:20px;
     flex-direction:column; align-items:stretch; gap:4px;
@@ -661,6 +672,7 @@ footer{ padding:56px 0 40px; margin-top:40px; background:var(--footer-bg); borde
   .about-mobile-copy p{ color:var(--text-2); font-size:15px; line-height:1.8; margin:0; text-align:left; }
   .about-mobile-actions{ display:flex; flex-wrap:wrap; gap:12px; }
   .about-mobile-actions .btn{ flex:1 1 180px; justify-content:center; }
+  .wa-float, .wa-tooltip{ display:none !important; }
 }
 @media (max-width: 560px){
   .grid-3, .grid-4, .grid-2{ grid-template-columns:1fr; }
@@ -675,6 +687,11 @@ footer{ padding:56px 0 40px; margin-top:40px; background:var(--footer-bg); borde
 @media (display-mode: standalone){
   body{ padding-top:0; padding-bottom:84px; }
   .navbar{ top:0; }
+  .section-a, .section-b, .section-c{
+    background:var(--bg);
+    box-shadow:none;
+    clip-path:none;
+  }
   .nav-toggle, .nav-cta{ display:none; }
   .nav-links{
     position:fixed; top:auto; left:0; right:0; bottom:0;
