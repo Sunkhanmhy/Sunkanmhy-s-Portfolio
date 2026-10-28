@@ -117,10 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const lines = [
     { type:'cmd', text:'About-me' },
-    { type:'out', text:'>> Full-Stack Engineer · 3+ yrs building scalable products' },
+    { type:'out', text:'>> Software & DevOps Engineer · 3+ yrs building scalable products' },
 
     { type:'cmd', text:'cat dev-stack.json' },
-    { type:'out', text:'>> { "backend": "Node · Go · Python", "frontend": "React · TypeScript", "Environment": "AWS · Google CLoud · Railway · Plesk · cPanel" }' },
+    { type:'out', text:'>> { "backend": "Node · Laravel · Python · PHP", "frontend": "React · TypeScript · Vite · Angular", "Environment": "AWS · Google CLoud · Docker · Kubernetes · Git & GitHub Actions" }' },
     
     { type:'cmd', text:'Opening-status -- active' },
     { type:'out', text:'>> Available for select freelance & full-time roles' },
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { type:'out', text:'>> Full-time, Contract, Freelance, Testing & QA' },
 
     { type:'cmd', text:'Project-roles' },
-    { type:'out', text:'>> Frontend Development, Backend Development, Testing & QA, Native Mobile App, Native Desktop App, Cloud-Based Solutions' },
+    { type:'out', text:'>> Frontend Engineering, Backend Engineering, DevOps, Testing & QA, Native Mobile App, Native Desktop App, Cloud-Based Solutions' },
   ];
 
   let lineIndex = 0, charIndex = 0;
